@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>aleta</name>
-	<comment>Project aleta created by Buildship.</comment>
+	<comment>Project playing-with-netty created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -22,7 +22,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1692859499337</id>
+			<id>1692905215852</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
