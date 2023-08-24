@@ -23,6 +23,8 @@ public class Launcher {
             log.error("Usage: java -jar aleta.jar <host> <port>");
             System.exit(1);
         }
+        log.info("Starting Netty");
+
         var eventLoop = new NioEventLoopGroup();
         var bootstrap = new Bootstrap().group(eventLoop)
                 .channel(NioDatagramChannel.class)
@@ -30,17 +32,18 @@ public class Launcher {
                 .handler(new PacketHandler());
 
         try {
+            log.info("Netty started on {}:{}", args[0], args[1]);
             bootstrap.bind(InetAddress.getByName(args[0]), Integer.parseInt(args[1]))
                     .sync()
                     .channel()
                     .closeFuture()
                     .await();
         } catch (NumberFormatException | UnknownHostException | InterruptedException e) {
-            log.error("Failed to start Aleta server", e);
+            log.error("Failed to start Netty", e);
         } finally {
             eventLoop.shutdownGracefully();
+            log.info("Stopped Netty EventLoopGroup");
         }
-        log.info("Aleta server started on {}:{}", args[0], args[1]);
     }
 
 }
